@@ -4,8 +4,10 @@
 // KEY: WQbt/ZB33HdcpqEVbabRVNgHLCE=
 
 function testingApi() {
+// var proxy = 'https://cors-anywhere.herokuapp.com/';
+var url = 'https://api.mindbodyonline.com/0_5/ClientService.asmx';
 var request = new XMLHttpRequest();
-request.open('POST', ' https://api.mindbodyonline.com/0_5/ClientService.asmx');
+request.open('POST', url);
 // var sr = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://clients.mindbodyonline.com/api/0_5_1">' +
 // '<soapenv:Header/>' +
 // '<soapenv:Body>' +
@@ -67,7 +69,7 @@ request.open('POST', ' https://api.mindbodyonline.com/0_5/ClientService.asmx');
 // '</soapenv:Body>' +
 // '</soapenv:Envelope>'
 
-var sr = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_5="http://clients.mindbodyonline.com/api/0_5">' +
+var sr = '<soapenv:Envelope xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/" xmlns:_5="https://clients.mindbodyonline.com/api/0_5">' +
 '<soapenv:Header/>' +
 '<soapenv:Body>' +
    '<GetClients>' +
@@ -79,18 +81,7 @@ var sr = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envel
                '<int>-99<int>' +
             '</SiteIDs>' +
          '</SourceCredentials>' +
-         '<UserCredentials>' +
-               '<Username>Siteowner</Username>' +
-               '<Password>apitest1234</Password>' +
-               '<SiteIDs>' +
-                  '<int>-99</int>' +
-               '</SiteIDs>' +
-               '<LocationID>0</LocationID>' +
-            '</UserCredentials>' +
-            '<XMLDetail>Full</XMLDetail>' +
-            '<PageSize>1500</PageSize>' +
-            '<CurrentPageIndex>0</CurrentPageIndex>' +
-            '<SearchText></SearchText>' +
+         
       '</Request>' +
    '</GetClients>' +
 '</soapenv:Body>' +
@@ -139,6 +130,7 @@ request.onreadystatechange = function() {
 
 // Send the POST request
 request.setRequestHeader('Content-Type', 'text/xml');
+request.setRequestHeader( 'Host', 'api.mindbodyonline.com');
 request.send(sr);
 
 // request.onload = handleSuccess;
