@@ -5,7 +5,7 @@
 
 function testingApi() {
 var request = new XMLHttpRequest();
-request.open('POST', ' http://api.mindbodyonline.com/0_5/ClientService.asmx');
+request.open('POST', ' https://api.mindbodyonline.com/0_5/ClientService.asmx');
 // var sr = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://clients.mindbodyonline.com/api/0_5_1">' +
 // '<soapenv:Header/>' +
 // '<soapenv:Body>' +
