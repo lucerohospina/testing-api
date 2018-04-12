@@ -4,10 +4,11 @@
 // KEY: WQbt/ZB33HdcpqEVbabRVNgHLCE=
 
 function testingApi() {
-// var proxy = 'https://cors-anywhere.herokuapp.com/';
+var proxy = 'https://cors-anywhere.herokuapp.com/';
 var url = 'https://api.mindbodyonline.com/0_5/ClientService.asmx';
 var request = new XMLHttpRequest();
-request.open('POST', url);
+request.open('POST', proxy+url);
+// request.open('POST', url);
 // var sr = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://clients.mindbodyonline.com/api/0_5_1">' +
 // '<soapenv:Header/>' +
 // '<soapenv:Body>' +
@@ -124,13 +125,18 @@ request.onreadystatechange = function() {
   if(request.readyState == 4) {
     if(request.status == 200) {
       console.log(request.responseText);
-    }
+      console.log(request.status);
+    } else console.log(request.responseText);
+           console.log(request.status);
   }
 }
 
 // Send the POST request
 request.setRequestHeader('Content-Type', 'text/xml');
-request.setRequestHeader( 'Host', 'api.mindbodyonline.com');
+request.setRequestHeader('Content-Type', 'charset=UTF-8');
+// request.setRequestHeader('SOAPAction', 'http://clients.mindbodyonline.com/api/0_5/GetClients');
+// request.setRequestHeader('Host', 'api.mindbodyonline.com');
+// request.setRequestHeader('User-Agent', 'Apache-HttpClient/4.1.1 (java 1.5)');
 request.send(sr);
 
 // request.onload = handleSuccess;
